@@ -1,4 +1,23 @@
+        ,----------------,              ,---------,
+        ,-----------------------,          ,"        ,"|
+      ,"                      ,"|        ,"        ,"  |
+     +-----------------------+  |      ,"        ,"    |
+     |  .-----------------.  |  |     +---------+      |
+     |  |                 |  |  |     | -==----'|      |
+     |  |  I LOVE SMB!    |  |  |     |         |      |
+     |  |  HTTP better    |  |  |/----|`---=    |      |
+     |  |  C:\>_          |  |  |   ,/|==== ooo |      ;
+     |  |                 |  |  |  // |(((( [78]|    ,"
+     |  `-----------------'  |," .;'| |((((     |  ,"
+     +-----------------------+  ;;  | |         |,"
+        /_)______________(_/  //'   | +---------+
+   ___________________________/___  `,
+  /  oooooooooooooooo  .o.  oooo /,   \,"-----------
+ / ==ooooooooooooooo==.o.  ooo= //   ,`\--{)h     ,"
+/_==__==========__==_ooo__ooo=_/'   /___________,"
+
 Ever since I discovered SMB requests can be injected into office docs I have been obsessed with the idea. 
+
 Years back a friend told me that you can replace SMB with a HTTP request, and it results in domain credentials been sent in the same way but over HTTP. All testing of HTTP resulted in a authentication prompt been executed on the targets machine, while not ideal as it requires the user to type in their own credentials it does work as a fall back option were targets don’t use IE or block SMB outbound.
 
 Then I discovered https://github.com/ryhanson/phishery this documented a different way to inject the HTTP request into a word document, now while the tool when used as intended still executes a prompt on the targets machine, it does result in the snagged creds been in cleartext, so some may find it of use. 
@@ -8,5 +27,6 @@ To review the output I created a weaponised doc, changed the file format from do
 
 I wanted to see if I could create my own batch script to create word docs with an injected HTTP request. This script is the output of this.
 To use simply copy the script to kali then open it and under the settings.xml.rels creation section simply add the IP address of your responder box were it says http://ADD-Your_Responder_IP-Here/docs1. I tried to automate this section but due to using an echo I couldn’t figure out how to prompt for an IP address then inject it in, so just manually add one till I figure it out ;0)
+
 
 Now for the but there’s a snag, SEP picks up this method and blocks the outbound request, but it sails past defender ;0)
